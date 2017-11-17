@@ -249,3 +249,171 @@ AK8963 I AM 0xFF I should be 0x48
 Communication failed, abort!
 ```
 
+# 16Nov2017
+
+Trying the MPU board with SPI instead of I2C
+
+```
+pin13 -> SCL
+pin12 -> SDA
+pin11->AD0/SD0
+pin2->CS
+```
+
+Upload "MPU9250BasicAHRS_SPI" sketch to board, following result:
+
+```
+^MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+Old slave address: 0xFF
+Old slave register: 0xFF
+Old slave config: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::magInit to return false
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+Old slave address: 0xFF
+Old slave register: 0xFF
+Old slave config: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+MPU9250::writeByteSPI slave returned: 0xFF
+Testing MPU9250::readBytes...
+readBytesSPI::Read byte: 0xFF
+1
+FF
+```
+
+Flip pin 11 and 12 wire: 
+
+```
+�MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+Old slave address: 0x0
+Old slave register: 0x0
+Old slave config: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::magInit to return false
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+Old slave address: 0x0
+Old slave register: 0x0
+Old slave config: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+MPU9250::writeByteSPI slave returned: 0x0
+Testing MPU9250::readBytes...
+readBytesSPI::Read byte: 0x0
+1
+0
+```
+
+Switch pin 11 and 12 back
+
+Upload "MPU9250_Debug" sketch to board, following result:
+
+```
+^BHW::writeByteSPI slave returned: 0xFF
+write(0x6B, 0x80): 0xFF
+BHW::writeByteSPI slave returned: 0xFF
+write(0x6B, 0x01): 0xFF
+BHW::writeByteSPI slave returned: 0xFF
+write(0x6C, 0x00): 0xFF
+BHW::writeByteSPI slave returned: 0xFF
+write(0x1A, 0x01): 0xFF
+BHW::writeByteSPI slave returned: 0xFF
+write(0x1B, 0x18): 0xFF
+BHW::writeByteSPI slave returned: 0xFF
+write(0x1C, 0x08): 0xFF
+BHW::writeByteSPI slave returned: 0xFF
+write(0x1D, 0x09): 0xFF
+BHW::writeByteSPI slave returned: 0xFF
+write(0x37, 0x30): 0xFF
+BHW::writeByteSPI slave returned: 0xFF
+write(0x6A, 0x20): 0xFF
+BHW::writeByteSPI slave returned: 0xFF
+write(0x24, 0x0D): 0xFF
+BHW::writeByteSPI slave returned: 0xFF
+write(0x25, 0x0C): 0xFF
+BHW::writeByteSPI slave returned: 0xFF
+write(0x26, 0x0B): 0xFF
+BHW::writeByteSPI slave returned: 0xFF
+write(0x63, 0x01): 0xFF
+BHW::writeByteSPI slave returned: 0xFF
+write(0x27, 0x81): 0xFF
+BHW::writeByteSPI slave returned: 0xFF
+write(0x26, 0x0A): 0xFF
+BHW::writeByteSPI slave returned: 0xFF
+write(0x63, 0x12): 0xFF
+BHW::writeByteSPI slave returned: 0xFF
+write(0x27, 0x81): 0xFF
+Calling ak8963WhoAmI()
+BHW::writeByteSPI slave returned: 0xFF
+BHW::writeByteSPI slave returned: 0xFF
+BHW::writeByteSPI slave returned: 0xFF
+BHW::writeByteSPI slave returned: 0xFF
+
+```
+
+We are failing to comunicate with the board over SPI
+
+Switch back to I2C and pull CS high: did not work
+
