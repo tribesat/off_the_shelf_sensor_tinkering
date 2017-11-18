@@ -417,3 +417,45 @@ We are failing to comunicate with the board over SPI
 
 Switch back to I2C and pull CS high: did not work
 
+# 18Nov2017
+
+Going to try out the LSM9DS1 board
+
+Wire into I2C
+
+Use [Sparkfun lSM9DS1 Arduino Library](https://github.com/sparkfun/SparkFun_LSM9DS1_Arduino_Library) basic I2C sketch
+
+Output:
+
+```
+G: -0.28, 1.16, 1.88 deg/s
+A: -0.00, 0.01, 1.02 g
+M: 0.29, 0.46, 0.38 gauss
+Pitch, Roll: 0.05, 0.66
+Heading: 246.09
+
+G: 0.06, 1.39, 1.45 deg/s
+A: -0.00, 0.01, 1.00 g
+M: 0.29, 0.46, 0.38 gauss
+Pitch, Roll: 0.05, 0.65
+Heading: 245.90
+
+G: 0.00, 1.26, 1.52 deg/s
+A: 0.00, 0.01, 1.00 g
+M: 0.29, 0.46, 0.37 gauss
+Pitch, Roll: -0.01, 0.35
+Heading: 246.07
+
+G: -0.37, 1.22, 1.62 deg/s
+A: 0.00, 0.00, 1.01 g
+M: 0.29, 0.46, 0.37 gauss
+Pitch, Roll: -0.12, 0.24
+Heading: 246.57
+```
+
+Looks real good
+
+This chip has a 3.5x3mm 24pin package, this is slightly larger than the MPU-9250 3x3mm 24pin
+
+I don't know if this is realy large enought to make a diffrence for assembly but is worth a look
+
